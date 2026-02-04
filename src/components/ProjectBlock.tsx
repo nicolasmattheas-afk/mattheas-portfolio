@@ -70,7 +70,8 @@ export const ProjectBlock: React.FC<ProjectBlockProps> = ({
           {/* Text Block */}
           <div className="w-full md:w-1/2 flex flex-col justify-center items-start space-y-6">
             <div className="flex flex-col space-y-2">
-              <span className="text-white/60 font-medium tracking-[0.2em] text-xs uppercase border-l-2 border-white pl-3">
+              {/* MODIFICATION ICI : text-neutral-300 pour être plus visible */}
+              <span className="text-neutral-300 font-medium tracking-[0.2em] text-xs uppercase border-l-2 border-white pl-3">
                 {project.client} • {project.year}
               </span>
               <h3 className="text-3xl md:text-5xl font-bold text-white leading-tight mt-2">
@@ -78,7 +79,8 @@ export const ProjectBlock: React.FC<ProjectBlockProps> = ({
               </h3>
             </div>
 
-            <p className="text-lg text-neutral-400 leading-relaxed font-light">
+            {/* MODIFICATION ICI : text-neutral-200 (quasi blanc) au lieu de text-neutral-400 (gris) */}
+            <p className="text-lg text-neutral-200 leading-relaxed font-light">
               {project.description}
             </p>
 
@@ -121,7 +123,8 @@ export const ProjectBlock: React.FC<ProjectBlockProps> = ({
         {/* Media Gallery Section (Video + Masonry Grid) */}
         {(project.video || (project.gallery && project.gallery.length > 0)) && (
           <div className="mt-16 md:mt-24 w-full animate-fade-in-up">
-             <h4 className="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-6">Visuels & Médias</h4>
+             {/* MODIFICATION ICI : text-neutral-300 au lieu de text-neutral-500 */}
+             <h4 className="text-sm font-bold text-neutral-300 uppercase tracking-widest mb-6">Visuels & Médias</h4>
              
              {/* Video Section */}
              {project.video && (
