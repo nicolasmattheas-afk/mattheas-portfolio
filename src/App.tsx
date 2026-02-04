@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Plus,LayoutGrid, Mail, Linkedin, Globe, Cpu, PenTool, BarChart3, Rocket, Phone, Layers, MessageSquare, Monitor, Database } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Plus,LayoutGrid, Mail, Linkedin, Globe, Cpu, PenTool, BarChart3, Rocket, Phone, Layers, MessageSquare, Monitor, Database, ArrowUp } from 'lucide-react';
 import { INITIAL_PROJECTS } from './constants';
 import { Project } from './types';
 import { ProjectBlock } from './components/ProjectBlock';
@@ -10,6 +10,21 @@ export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentEditingProject, setCurrentEditingProject] = useState<Project | null>(null);
   const [aiInitialMode, setAiInitialMode] = useState(false);
+    const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Gestion du scroll pour afficher le bouton "Retour en haut"
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleDelete = (id: string) => {
     if (confirm("Êtes-vous sûr de vouloir supprimer ce projet ?")) {
@@ -66,6 +81,9 @@ export default function App() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <div className="min-h-screen bg-black font-sans text-white">
       {/* Navigation */}
@@ -331,6 +349,17 @@ export default function App() {
         </section>
       </main>
 
+      {/* Bouton Retour en haut */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-black border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-500 transform hover:scale-110 group ${
+          showScrollTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+        }`}
+        aria-label="Retour en haut"
+      >
+        <ArrowUp size={24} className="text-white fill-black" strokeWidth={2} />
+      </button>
+      
       {/* Edit Modal */}
       <EditModal 
         isOpen={modalOpen}
