@@ -328,7 +328,7 @@ export default function App() {
         {/* Contact/Footer */}
         <section id="contact" className="bg-neutral-950 text-white py-24 px-6 relative overflow-hidden border-t border-neutral-900 scroll-mt-28">
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">On travaille ensemble ?</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Travaillons ensemble !</h2>
             <p className="text-neutral-400 mb-12 text-lg max-w-2xl mx-auto">
               Je suis disponible pour une alternance. Discutons de vos projets marketing et tech.
             </p>
