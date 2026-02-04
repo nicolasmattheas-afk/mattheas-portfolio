@@ -129,7 +129,7 @@ export default function App() {
             </div>
 
             {/* Right: Image */}
-            <div className="relative order-1 md:order-2 flex justify-center md:justify-end h-[50vh] md:h-auto">
+            <div className="relative order-1 md:order-2 flex justify-center md:justify-end mb-12 md:mb-0">
               <div className="relative w-full max-w-lg">
                 {/* Image Container */}
                 <div className="relative z-10">
