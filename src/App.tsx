@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Edit3, Eye, LayoutGrid, Mail, Linkedin, Globe, Cpu, PenTool, BarChart3, Rocket, Phone, Layers, MessageSquare, Monitor, Database } from 'lucide-react';
+import { Plus,LayoutGrid, Mail, Linkedin, Globe, Cpu, PenTool, BarChart3, Rocket, Phone, Layers, MessageSquare, Monitor, Database } from 'lucide-react';
 import { INITIAL_PROJECTS } from './constants';
 import { Project } from './types';
 import { ProjectBlock } from './components/ProjectBlock';
@@ -7,7 +7,6 @@ import { EditModal } from './components/EditModal';
 
 export default function App() {
   const [projects, setProjects] = useState<Project[]>(INITIAL_PROJECTS);
-  const [isEditable, setIsEditable] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentEditingProject, setCurrentEditingProject] = useState<Project | null>(null);
   const [aiInitialMode, setAiInitialMode] = useState(false);
@@ -86,18 +85,6 @@ export default function App() {
               <a href="#work" onClick={(e) => scrollToSection(e, 'work')} className="hover:text-white transition-colors cursor-pointer">Projets</a>
               <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-white transition-colors cursor-pointer">Contact</a>
             </div>
-            
-            <button
-              onClick={() => setIsEditable(!isEditable)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all border ${
-                isEditable 
-                  ? 'bg-neutral-800 border-neutral-700 text-white' 
-                  : 'bg-black border-neutral-800 text-neutral-500 hover:text-white hover:border-neutral-600'
-              }`}
-            >
-              {isEditable ? <Eye size={14} /> : <Edit3 size={14} />}
-              {isEditable ? 'Vue' : 'Édition'}
-            </button>
           </div>
         </div>
       </nav>
@@ -156,7 +143,6 @@ export default function App() {
                 <div className="absolute top-10 left-1/2 -translate-x-1/2 w-64 h-64 bg-white/5 rounded-full blur-[60px] -z-10"></div>
               </div>
             </div>
-
           </div>
         </section>
 
@@ -287,15 +273,6 @@ export default function App() {
               <h2 className="text-xs font-bold text-neutral-500 uppercase tracking-[0.2em] mb-4">Portfolio</h2>
               <h3 className="text-4xl font-bold text-white">Expériences & Projets</h3>
             </div>
-            {isEditable && (
-              <button 
-                onClick={openNewProjectModal}
-                className="flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-lg hover:bg-neutral-200 transition-colors shadow-lg font-medium"
-              >
-                <Plus size={18} />
-                Ajouter une expérience
-              </button>
-            )}
           </div>
 
           <div className="flex flex-col">
@@ -304,7 +281,7 @@ export default function App() {
                 key={project.id}
                 project={project}
                 index={index}
-                isEditable={isEditable}
+                isEditable={false} // Mode lecture seule forcé
                 onEdit={openEditModal}
                 onDelete={handleDelete}
                 onAiAssist={openAiRefineModal}
@@ -315,11 +292,6 @@ export default function App() {
               <div className="text-center py-32 bg-neutral-900/50 rounded-3xl border border-dashed border-neutral-800">
                 <LayoutGrid className="mx-auto h-12 w-12 text-neutral-700 mb-4" />
                 <p className="text-neutral-500 font-medium">Aucun projet pour le moment.</p>
-                {isEditable && (
-                   <button onClick={openNewProjectModal} className="mt-4 text-white font-semibold hover:underline">
-                     Commencez par en ajouter un
-                   </button>
-                )}
               </div>
             )}
           </div>
