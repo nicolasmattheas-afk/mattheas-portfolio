@@ -143,6 +143,8 @@ export const INITIAL_PROJECTS: Project[] = [
       'https://i.imgur.com/rDzVqFW.mp4', // VIDEO PAYSAGE 3
       'https://i.imgur.com/D5RI5S5.mp4', // VIDEO PAYSAGE 4
       'https://i.imgur.com/18aurp3.mp4', // VIDEO PAYSAGE 5
+      'https://i.imgur.com/geIKtAm.mp4', // VIDEO PAYSAGE 6
+      'https://i.imgur.com/2bH8UpU.mp4', // VIDEO PAYSAGE 7
       'https://i.imgur.com/aIux0L4l.png', // 1. Portrait futuriste
       'https://i.imgur.com/Uxtpm2y.png', // 2.
       'https://i.imgur.com/IFUk7n7.png', // 3.
